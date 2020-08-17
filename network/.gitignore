@@ -1,0 +1,7 @@
+application/node_modules
+application/dashboard/env
+application/dashboard/identity_ngp
+network/channel-artifacts
+network/crypto-config
+application/package-lock.json
+chaincode/vendor

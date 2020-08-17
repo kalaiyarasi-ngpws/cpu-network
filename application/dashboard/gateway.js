@@ -1,15 +1,15 @@
-
 'use strict';
 const fs = require('fs');
 const yaml = require('js-yaml')
 const {Wallets,Gateway} = require('fabric-network');
 let gateway;
+
 async function getChannel(org){
     try {
         console.log("Getting wallet")
         let createIdentity = process.env.IDENTITYPATH;
         const wallet = await Wallets.newFileSystemWallet(`${createIdentity}_${org}`);
-                //Getting user
+        //Getting user
         const identity = await wallet.get(org);
         errorHandler(identity,"IDENTITY not present")
         //Getting ccp
@@ -31,6 +31,7 @@ async function getChannel(org){
         return error;
     }
 }
+
 async function getContract(org){
     try {
         console.log("Getting wallet")
@@ -73,21 +74,16 @@ function disconnect(){
 async function getEndorsers(org,mspId){
   try{
   let identity = process.env.IDENTITYPATH
-    let connectionProfile = process.env.CCPPATH
-    
+    let connectionProfile = process.env.CCPPATH    
     const wallet = await Wallets.newFileSystemWallet(`${identity}_${org}`);
-    
     const fabricUserName = org;
-
     const ccp = yaml.safeLoad(fs.readFileSync(connectionProfile));
     let connectionOptions = {
         wallet : wallet,
         identity: fabricUserName,
         discovery: { enabled: true, asLocalhost: true},
       };
-
     gateway = new Gateway();
-    
     await gateway.connect(ccp,connectionOptions);
     const network = await gateway.getNetwork('cpuchannel');
     const channel = await network.getChannel();
@@ -96,7 +92,6 @@ async function getEndorsers(org,mspId){
     console.error(error);
     return error;
 }
-
 }
 module.exports.getContract = getContract;
 module.exports.getChannel = getChannel;

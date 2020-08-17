@@ -3,9 +3,6 @@ const fs = require('fs');
 const {Wallets} = require('fabric-network');
 async function main(org){
     try {
-        // const filePath = process.env.WALLET_PATH;
-        // checking for wallet path
-        // errorHandler(filePath,"File path not defined");
         const certPath = process.env.CERTPATH;
         // checking cert path
         errorHandler(certPath,"Certificate path not defined");
@@ -42,4 +39,4 @@ function errorHandler(value,message){
         throw new Error(message);
     }
 }
-main("ngp").then(()=> console.log("Done!")).catch(e => console.error(e));
+// main("ngp").then(()=> console.log("Done!")).catch(e => console.error(e));

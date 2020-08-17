@@ -3,7 +3,6 @@ import {
 } from '../config'
 const sign = require('jsonwebtoken/sign');
 
-
 // import {loginQuery} from './login.query'
 
 const login = async(req,res)=>{

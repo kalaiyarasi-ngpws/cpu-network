@@ -17,8 +17,7 @@ const history = async(req,res)=>{
         return res.send(err);
     } finally {
         gateway.disconnect();
-    }
-    
+    }   
 }
 
 const addcpu = async(req,res)=>{
@@ -66,7 +65,6 @@ const addusage = async(req,res)=>{
         let contract = await gateway.getContract(org);
         console.log('submitting tx');
         let asset = await contract.submitTransaction('AddUsage',assetName,val1,val2);
-        // console.log(JSON.parse(asset.toString()));
         return res.send(JSON.parse(asset.toString()));
     } catch(err){
         console.log(err);
