@@ -1,0 +1,4 @@
+export CERTPATH="/home/hl-dinesh/setup-node/network/crypto-config/peerOrganizations/ngp.cpu-network.com/users/Admin@ngp.cpu-network.com/msp/signcerts/Admin@ngp.cpu-network.com-cert.pem"
+export KEYPATH="/home/hl-dinesh/setup-node/network/crypto-config/peerOrganizations/ngp.cpu-network.com/users/Admin@ngp.cpu-network.com/msp/keystore/priv_sk"
+export IDENTITYPATH="/home/hl-dinesh/setup-node/application/dashboard/identity"
+export CCPPATH="/home/hl-dinesh/setup-node/application/dashboard/connection-profile.yaml"

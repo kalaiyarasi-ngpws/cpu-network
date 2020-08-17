@@ -1,0 +1,48 @@
+name: "network_cpu"
+
+description: "Cpu-use Network"
+
+version: "1.0"
+
+client:
+  organization: ngp
+  connection:
+    timeout:
+      peer:
+        endorser: 300
+        eventHub: 300
+        eventReg: 300
+      orderer: 300
+
+channels:
+  cpuchannel:
+    orderers:
+      - orderer.cpu-network.com
+    peers:
+      peer0.ngp.cpu-network.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+organizations:
+  ngp:
+    mspid: ngpMSP
+    peers:
+      - peer0.ngp.cpu-network.com
+      
+orderers:
+  orderer.cpu-network.com:
+    url: grpcs://localhost:7050
+    grpcOptions:
+      ssl-target-name-override: orderer.cpu-network.com
+    tlsCACerts:
+      path: /home/hl-dinesh/setup-node/network/crypto-config/ordererOrganizations/cpu-network.com/orderers/orderer.cpu-network.com/msp/tlscacerts/tlsca.cpu-network.com-cert.pem
+peers:
+  peer0.ngp.cpu-network.com:
+    url: grpcs://localhost:7051
+    grpcOptions:
+      ssl-target-name-override: peer0.ngp.cpu-network.com
+      request-timeout: 120001
+    tlsCACerts:
+      path: /home/hl-dinesh/setup-node/network/crypto-config/peerOrganizations/ngp.cpu-network.com/peers/peer0.ngp.cpu-network.com/msp/tlscacerts/tlsca.ngp.cpu-network.com-cert.pem
